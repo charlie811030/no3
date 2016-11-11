@@ -32,16 +32,16 @@ namespace WindowsFormsApplication1
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-               
+            monthCalendar1.ShowWeekNumbers = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (radioButton1.Checked == true)
-                monthCalendar1.ShowWeekNumbers = true;
-            else
-                monthCalendar1.ShowWeekNumbers = false;
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    if (radioButton1.Checked == true)
+        //        monthCalendar1.ShowWeekNumbers = true;
+        //    else
+        //        monthCalendar1.ShowWeekNumbers = false;
+        //}
 
         private void 儲存SToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -96,7 +96,37 @@ namespace WindowsFormsApplication1
             //this.Invalidate();
         }
 
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            contentTextBox.Text = "";
+            currentFileName = "";
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            monthCalendar1.ShowWeekNumbers = true;
+        }
+
+        private void 開啟OToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+      
+
+            dialogForOpening.Filter = "Text File|*.txt|All File|*.*";
+            dialogForOpening.InitialDirectory = @"c:\temp";
+            if (dialogForOpening.ShowDialog() != DialogResult.OK)
+                return;
+            string fileName = dialogForOpening.FileName;
+            currentFileName = fileName;
+            StreamReader r = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
+            contentTextBox.Text = r.ReadToEnd();
+            r.Close();
+            contentTextBox.Modified = false;
+        }
+
+        private void dialogForOpening_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
     
 }

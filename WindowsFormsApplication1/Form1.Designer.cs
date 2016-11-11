@@ -34,7 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -72,12 +71,14 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.關於AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dialogForSaving = new System.Windows.Forms.SaveFileDialog();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dialogForOpening = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // time1
             // 
-            this.time1.Location = new System.Drawing.Point(127, 245);
+            this.time1.Location = new System.Drawing.Point(130, 247);
             this.time1.Name = "time1";
             this.time1.Size = new System.Drawing.Size(144, 22);
             this.time1.TabIndex = 1;
@@ -113,24 +114,15 @@
             // 
             // monthCalendar1
             // 
+            this.monthCalendar1.BackColor = System.Drawing.Color.White;
             this.monthCalendar1.Location = new System.Drawing.Point(18, 9);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 5;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(289, 188);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 25);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "確定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(602, 314);
+            this.button2.Location = new System.Drawing.Point(630, 332);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 26);
             this.button2.TabIndex = 7;
@@ -160,6 +152,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "顯示";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -176,15 +169,20 @@
             // 
             // contentTextBox
             // 
+            this.contentTextBox.AutoWordSelection = true;
+            this.contentTextBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.contentTextBox.EnableAutoDragDrop = true;
+            this.contentTextBox.ForeColor = System.Drawing.Color.White;
             this.contentTextBox.Location = new System.Drawing.Point(35, 364);
             this.contentTextBox.Name = "contentTextBox";
+            this.contentTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
             this.contentTextBox.Size = new System.Drawing.Size(661, 191);
             this.contentTextBox.TabIndex = 11;
             this.contentTextBox.Text = "";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(602, 263);
+            this.button3.Location = new System.Drawing.Point(630, 247);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 27);
             this.button3.TabIndex = 12;
@@ -194,7 +192,8 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -202,8 +201,9 @@
             this.工具TToolStripMenuItem,
             this.編輯EToolStripMenuItem,
             this.說明HToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(339, 9);
+            this.menuStrip1.Location = new System.Drawing.Point(247, 9);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.ShowItemToolTips = true;
             this.menuStrip1.Size = new System.Drawing.Size(245, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
@@ -243,6 +243,7 @@
             this.開啟OToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.開啟OToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.開啟OToolStripMenuItem.Text = "開啟(&O)";
+            this.開啟OToolStripMenuItem.Click += new System.EventHandler(this.開啟OToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
@@ -432,6 +433,21 @@
             this.關於AToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.關於AToolStripMenuItem.Text = "關於(&A)...";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(630, 288);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(94, 24);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "清除";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // dialogForOpening
+            // 
+            this.dialogForOpening.FileName = "openFileDialog1";
+            this.dialogForOpening.FileOk += new System.ComponentModel.CancelEventHandler(this.dialogForOpening_FileOk);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -439,13 +455,13 @@
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Login3__2_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(720, 554);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.contentTextBox);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -453,9 +469,10 @@
             this.Controls.Add(this.time1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "DateWrite";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);
             this.menuStrip1.ResumeLayout(false);
@@ -471,7 +488,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -509,6 +525,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem 關於AToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog dialogForSaving;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.OpenFileDialog dialogForOpening;
     }
 }
 

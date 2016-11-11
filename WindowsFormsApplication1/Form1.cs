@@ -28,6 +28,11 @@ namespace WindowsFormsApplication1
             //月曆顯示開始日期和結束日期
             time1.Text = monthCalendar1.SelectionStart.ToString();
             time2.Text = monthCalendar1.SelectionEnd.ToString();
+
+            //contentTextBox.Text += Environment.NewLine + "日期" +
+            //  monthCalendar1.SelectionRange.Start.ToShortDateString() + "到" + monthCalendar1.SelectionRange.End.
+
+            //  ToShortDateString() + ".";
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -58,7 +63,7 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            savefile();
+            savefile();    //存檔
         }
 
         private void savefile()
@@ -98,20 +103,22 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            contentTextBox.Text = "";
-            currentFileName = "";
+            contentTextBox.Text = "";      //更新(清除)輸入記錄
+            currentFileName = "";    
+            time1.Clear();    //清除開始日期記錄
+            time2.Clear();    //清除結束日期記錄
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            monthCalendar1.ShowWeekNumbers = true;
+            monthCalendar1.ShowWeekNumbers = true;     //顯示月曆週數
         }
 
         private void 開啟OToolStripMenuItem_Click(object sender, EventArgs e)
         {
       
 
-            dialogForOpening.Filter = "Text File|*.txt|All File|*.*";
+            dialogForOpening.Filter = "Text File|*.txt|All File|*.*";       
             dialogForOpening.InitialDirectory = @"c:\temp";
             if (dialogForOpening.ShowDialog() != DialogResult.OK)
                 return;
@@ -126,6 +133,40 @@ namespace WindowsFormsApplication1
         private void dialogForOpening_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+
+            //讓行事曆指定的日期可以在textbox顯示今天的日期。
+            contentTextBox.Text +=/* Environment.NewLine +*/ "日期" +
+                monthCalendar1.SelectionRange.Start.ToShortDateString() +
+                "到" + monthCalendar1.SelectionRange.End.
+
+                ToShortDateString() + ".";   //輸出功能
+            //contentTextBox.Text = "日期" +
+            //  time1.ToString() +
+            //  "到" + time2.ToString();
+
+
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            contentTextBox.SelectionBullet = !contentTextBox.SelectionBullet;
+        }
+
+        private void 結束XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 另存新檔AToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savefile();
         }
     }
     

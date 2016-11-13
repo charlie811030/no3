@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace WindowsFormsApplication1
 {
@@ -116,10 +117,15 @@ namespace WindowsFormsApplication1
 
         private void 開啟OToolStripMenuItem_Click(object sender, EventArgs e)
         {
-      
+            //開啟圖片檔案
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Load(openFileDialog1.FileName);
+            }
 
+            //開始文字檔案
             dialogForOpening.Filter = "Text File|*.txt|All File|*.*";       
-            dialogForOpening.InitialDirectory = @"c:\temp";
+            //dialogForOpening.InitialDirectory = @"c:\temp";
             if (dialogForOpening.ShowDialog() != DialogResult.OK)
                 return;
             string fileName = dialogForOpening.FileName;
@@ -128,6 +134,10 @@ namespace WindowsFormsApplication1
             contentTextBox.Text = r.ReadToEnd();
             r.Close();
             contentTextBox.Modified = false;
+
+
+
+
         }
 
         private void dialogForOpening_FileOk(object sender, CancelEventArgs e)
@@ -141,7 +151,7 @@ namespace WindowsFormsApplication1
 
 
             //讓行事曆指定的日期可以在textbox顯示今天的日期。
-            contentTextBox.Text +=/* Environment.NewLine +*/ "日期" +
+            contentTextBox.Text +=/* Environment.NewLine + Environment.NewLine+*/ "日期" +
                 monthCalendar1.SelectionRange.Start.ToShortDateString() +
                 "到" + monthCalendar1.SelectionRange.End.
 
@@ -167,6 +177,49 @@ namespace WindowsFormsApplication1
         private void 另存新檔AToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savefile();
+        }
+
+        private void cbosize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //
+            contentTextBox.SelectionFont = new Font(contentTextBox.Font.FontFamily.ToString(), float.Parse(cbosize.Text), contentTextBox.Font.Style);
+        }
+
+        private void 檔案FToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dialogForSaving_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //存圖片
+              SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Images|*.png;*.bmp;*.jpg";
+            ImageFormat format = ImageFormat.Png;
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string ext = System.IO.Path.GetExtension(sfd.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                }
+                pictureBox1.Image.Save(sfd.FileName, format);
+            }
         }
     }
     

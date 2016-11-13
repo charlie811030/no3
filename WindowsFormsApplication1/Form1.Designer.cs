@@ -64,17 +64,26 @@
             this.貼上PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.全選AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbBullet = new System.Windows.Forms.ToolStripMenuItem();
             this.dialogForSaving = new System.Windows.Forms.SaveFileDialog();
             this.button4 = new System.Windows.Forms.Button();
             this.dialogForOpening = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
-            this.tsbBullet = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.cboSize2 = new System.Windows.Forms.ToolStripLabel();
+            this.cbosize = new System.Windows.Forms.ToolStripComboBox();
+            this.字型大小ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // time1
@@ -198,6 +207,7 @@
             this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuStrip1.AutoSize = false;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.檔案FToolStripMenuItem,
@@ -207,7 +217,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(250, 9);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.ShowItemToolTips = true;
-            this.menuStrip1.Size = new System.Drawing.Size(252, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(458, 25);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -225,8 +235,9 @@
             this.toolStripSeparator2,
             this.結束XToolStripMenuItem});
             this.檔案FToolStripMenuItem.Name = "檔案FToolStripMenuItem";
-            this.檔案FToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.檔案FToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
             this.檔案FToolStripMenuItem.Text = "檔案(&F)";
+            this.檔案FToolStripMenuItem.Click += new System.EventHandler(this.檔案FToolStripMenuItem_Click);
             // 
             // 新增NToolStripMenuItem
             // 
@@ -310,19 +321,19 @@
             this.自訂CToolStripMenuItem,
             this.選項OToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
-            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.工具TToolStripMenuItem.Text = "工具(&T)";
             // 
             // 自訂CToolStripMenuItem
             // 
             this.自訂CToolStripMenuItem.Name = "自訂CToolStripMenuItem";
-            this.自訂CToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.自訂CToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.自訂CToolStripMenuItem.Text = "自訂(&C)";
             // 
             // 選項OToolStripMenuItem
             // 
             this.選項OToolStripMenuItem.Name = "選項OToolStripMenuItem";
-            this.選項OToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.選項OToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.選項OToolStripMenuItem.Text = "選項(&O)";
             // 
             // 編輯EToolStripMenuItem
@@ -337,7 +348,7 @@
             this.toolStripSeparator4,
             this.全選AToolStripMenuItem});
             this.編輯EToolStripMenuItem.Name = "編輯EToolStripMenuItem";
-            this.編輯EToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.編輯EToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.編輯EToolStripMenuItem.Text = "編輯(&E)";
             // 
             // 復原UToolStripMenuItem
@@ -397,6 +408,17 @@
             this.全選AToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.全選AToolStripMenuItem.Text = "全選(&A)";
             // 
+            // tsbBullet
+            // 
+            this.tsbBullet.Name = "tsbBullet";
+            this.tsbBullet.Size = new System.Drawing.Size(68, 21);
+            this.tsbBullet.Text = "項目符號";
+            this.tsbBullet.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // dialogForSaving
+            // 
+            this.dialogForSaving.FileOk += new System.ComponentModel.CancelEventHandler(this.dialogForSaving_FileOk);
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(611, 264);
@@ -414,20 +436,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(35, 312);
+            this.button1.Location = new System.Drawing.Point(26, 321);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 26);
             this.button1.TabIndex = 15;
             this.button1.Text = "加入日期";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tsbBullet
-            // 
-            this.tsbBullet.Name = "tsbBullet";
-            this.tsbBullet.Size = new System.Drawing.Size(68, 20);
-            this.tsbBullet.Text = "項目符號";
-            this.tsbBullet.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // tabControl1
             // 
@@ -441,6 +456,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.contentTextBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -455,10 +472,73 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(682, 198);
+            this.tabPage2.Size = new System.Drawing.Size(678, 176);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cboSize2,
+            this.cbosize});
+            this.toolStrip1.Location = new System.Drawing.Point(250, 34);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(191, 25);
+            this.toolStrip1.TabIndex = 12;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // cboSize2
+            // 
+            this.cboSize2.Name = "cboSize2";
+            this.cboSize2.Size = new System.Drawing.Size(56, 22);
+            this.cboSize2.Text = "字型大小";
+            // 
+            // cbosize
+            // 
+            this.cbosize.Items.AddRange(new object[] {
+            "9",
+            "10",
+            "12",
+            "14",
+            "16"});
+            this.cbosize.Name = "cbosize";
+            this.cbosize.Size = new System.Drawing.Size(121, 25);
+            this.cbosize.SelectedIndexChanged += new System.EventHandler(this.cbosize_SelectedIndexChanged);
+            // 
+            // 字型大小ToolStripMenuItem
+            // 
+            this.字型大小ToolStripMenuItem.Name = "字型大小ToolStripMenuItem";
+            this.字型大小ToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.字型大小ToolStripMenuItem.Text = "字型大小";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(487, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 105);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button5.Location = new System.Drawing.Point(523, 117);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(112, 38);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "存圖片";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
@@ -467,6 +547,7 @@
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Login3__2_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(720, 603);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
@@ -488,13 +569,16 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DateWrite";
+            this.Text = "DateWrite  By charliewu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,6 +628,13 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel cboSize2;
+        private System.Windows.Forms.ToolStripComboBox cbosize;
+        private System.Windows.Forms.ToolStripMenuItem 字型大小ToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button5;
     }
 }
 

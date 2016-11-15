@@ -12,9 +12,9 @@ using System.Drawing.Imaging;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class Form1主頁 : Form
     {
-        public Form1()
+        public Form1主頁()
         {
             InitializeComponent();
         }
@@ -67,6 +67,7 @@ namespace WindowsFormsApplication1
             savefile();    //存檔
         }
 
+        //重構存成一個文字檔
         private void savefile()
         {
             string fileName;
@@ -171,6 +172,7 @@ namespace WindowsFormsApplication1
 
         private void 結束XToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //結束
             Application.Exit();
         }
 
@@ -220,6 +222,40 @@ namespace WindowsFormsApplication1
                 }
                 pictureBox1.Image.Save(sfd.FileName, format);
             }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Visible = false;
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.BringToFront();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Bitmap bmp;//宣告圖形物件
+            int oldx, oldy;
+            int PenPoint; //畫筆粗細
+            Color PenColor;
+
+        }
+
+        private void 開啟OToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
     

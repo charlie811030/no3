@@ -22,6 +22,6 @@ C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\obj\Debug\WindowsFor
 C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
 C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\obj\Debug\日記.csprojResolveAssemblyReference.cache
-C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\obj\Debug\日記.csproj.GenerateResource.Cache
+C:\lab\_第三次專題\日記\no3\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1主頁.resources
